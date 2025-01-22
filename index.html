@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Colours</title>
+    <style>
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            font-size: 50px;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #2166ac;
+        }
+
+        h3 {
+            font-size: 30px;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #2166ac;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #000000;
+        }
+        
+        button {
+            background-color: #d1e5f0;
+            border: 2px solid #2166ac;
+            cursor: pointer;
+            padding: 5px 9px;
+            border-radius: 3px;
+        }
+        button:hover {
+            opacity: 0.7;
+        }
+        #generate-btn {
+            background-color: #2166ac;
+            color: white;
+        }
+        #yes-btn {
+            background-color: #2166ac;
+            color: white;
+        }
+        #no-btn {
+            background-color: #2166ac;
+            color: white;
+        }
+        #colour-display {
+            margin: 20px auto;
+            width: 50%;
+            height: auto;
+            background-color: #2166ac;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #333;
+            color: white;
+            font-size: 1.5em;
+            transition: width 0.3s, height 0.3s;
+        }
+        #question {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        #colour-code {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        footer {
+            background-color: #2166ac;
+            height: 75px;
+        }
+        footer p {
+            font-size: 20px;
+            font-family: Tahoma, Arial, sans-serif;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Colour Generator</h1>
+    <button id="generate-btn" onclick="generateRandomColour()">Generate Colour</button>
+
+    <div id="colour-display">
+        Your colour will appear here.
+    </div>
+
+    <div id="question" style="display: none;">
+        Do you like the colour?
+        <button id="yes-btn" onclick="likeColour()">Yes</button>
+        <button id="no-btn" onclick="generateRandomColour()">No</button>
+    </div>
+
+    <div id="colour-code"></div>
+
+    <h3>Discover the Hidden Power of Random Colours</h3>
+    <p>How something as simple as a random colour generator can make your day better? It's not just another web tool - it's your secret weapon for mental clarity and creative breakthroughs:</p>
+    <h3>Breaking Decision Fatigue</h3>
+    <ul style="text-align: left;">
+        <li><p><strong>Why it works: </strong>When overwhelmed by big tasks or choices, engaging in a simple, low-stakes decision-making activity like "Do you like this colour?" can reset mental focus.</p></li>
+        <li><p><strong>Benefit: </strong>It acts as a cognitive "palette cleanser," helping users regain clarity before tackling more complex problems.</p></li>
+    </ul>
+
+    <h3>Sparking Creativity</h3>
+    <ul style="text-align: left;">
+        <li><p><strong>Why it works: </strong>Seeing random colours can trigger inspiration, whether for art, home decor, or even abstract ideas.</p></li>
+        <li><p><strong>Benefit: </strong>The randomness encourages out-of-the-box thinking and may lead to unexpected solutions or insights.</p></li>
+    </ul>
+
+    <h3>Mood Enhancement</h3>
+    <ul style="text-align: left;">
+        <li><p><strong>Why it works: </strong>Colours are known to evoke emotions. Interacting with a pleasant or unexpected colour might improve mood or create a moment of joy.</p></li>
+        <li><p><strong>Benefit: </strong>It adds a brief, positive experience to your day.</p></li>
+    </ul>
+
+    <h3>A Fun, Simple Distraction</h3>
+    <ul style="text-align: left;">
+        <li><p><strong>Why it works: </strong>Sometimes, people need a quick, non-intrusive break to reset their focus.</p></li>
+        <li><p><strong>Benefit: </strong>The simplicity of the tool offers a mindful distraction without being overwhelming or requiring a significant time investment.</p></li>
+    </ul>
+
+    <h3>Micro Decisions for Micro Wins</h3>
+    <ul style="text-align: left;">
+        <li><p><strong>Why it works: </strong>Completing small tasks, even as simple as choosing a colour, can give a sense of accomplishment.</p></li>
+        <li><p><strong>Benefit: </strong>These micro "wins" can contribute to building confidence and momentum in other areas.</p></li>
+    </ul>
+
+    <h3>Accessibility and Universal Appeal</h3>
+    <ul style="text-align: left;">
+        <li><p><strong>Why it works: </strong>Everyone can relate to colours; it's a universally accessible concept requiring no special knowledge or skills.</p></li>
+        <li><p><strong>Benefit: </strong>The tool appeals to a broad audience, making it inclusive and easy to use.</p></li>
+    </ul>
+
+    <p>The beauty lies in its simplicity - everyone understands colour, whether you're a seasoned designer or just someone looking for a moment of inspiration. It's your pocket-sized creativity boost, ready whenever you need that perfect mental break.</p>
+    <p>You may also like our <a href="https://dumh9e9ycmsox.cloudfront.net/">Positive Affirmation Generator</a></p>
+
+    <script>
+        function generateRandomColour() {
+            const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+            // padStart(6, '0') - Ensures the resulting string is always 6 characters long by adding leading zeros if necessary
+            const colourDisplay = document.getElementById('colour-display');
+            
+            // Update the colour display
+            colourDisplay.style.backgroundColor = randomColor;
+            colourDisplay.textContent = '';
+            colourDisplay.style.color = 'white';
+            colourDisplay.style.width = '60%';
+            colourDisplay.style.aspectRatio = '1.5';
+
+            // Show the question section
+            document.getElementById('question').style.display = 'block';
+
+            // Clear previous colour code
+            document.getElementById('colour-code').textContent = '';
+
+            // Store the colour code for later reference
+            colourDisplay.dataset.currentColor = randomColor;
+        }
+
+        function likeColour() {
+            const colourDisplay = document.getElementById('colour-display');
+            const currentColor = colourDisplay.dataset.currentColor;
+            document.getElementById('colour-code').textContent = `Here is your colour: ${currentColor}`;
+        }
+    </script>
+    <footer>
+        <p>&copy; 2024 <a href="https://www.linkedin.com/in/alexander-parshakov/" style="color: white; text-decoration: none;">O.Parshakov</a></p>
+       
+        <p>Dream it. Build it.</p>
+    </footer>
+</body>
+</html>
